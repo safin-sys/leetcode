@@ -1,37 +1,21 @@
-const head = {
-    value: 1,
-    next: {
-        value: 2,
-        next: {
-            value: 3,
-            next: {
-                value: 4,
-                next: {
-                    value: 5,
-                    next: null
-                }
-            }
-        }
-    }
-}
-const head_copy = {
-    value: 1,
-    next: {
-        value: 2,
-        next: {
-            value: 3,
-            next: {
-                value: 4,
-                next: {
-                    value: 5,
-                    next: null
-                }
-            }
-        }
+class Node {
+    constructor(val, next) {
+        this.val = val ? val : 0
+        this.next = next ? next : null
     }
 }
 
-const reverse_linked_list_iterative = (head) => {
+const a = new Node(1)
+const b = new Node(2)
+const c = new Node(3)
+const d = new Node(4)
+const e = new Node(5)
+a.next = b
+b.next = c
+c.next = d
+d.next = e
+
+const reverse_iterate = head => {
     let prev = null
     let curr = head
 
@@ -41,22 +25,13 @@ const reverse_linked_list_iterative = (head) => {
         prev = curr
         curr = next
     }
-
     return prev
 }
 
-console.log(reverse_linked_list_iterative(head));
-
-const reverse_linked_list_recursion = (head) => {
-    if (!head) return null
-
-    let newHead = head
-    if (head.next) {
-        newHead = reverse_linked_list_recursion(head.next)
-        head.next.next = head
-    }
+const reverse_recursion = head => {
+    if (head === null || head.next === null) return head
+    let reversedList = reverse_recursion(head.next)
+    head.next.next = head
     head.next = null
-    return newHead
+    return reversedList
 }
-
-console.log(reverse_linked_list_recursion(head_copy));
