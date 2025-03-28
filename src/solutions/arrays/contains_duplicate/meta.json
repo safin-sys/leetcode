@@ -1,0 +1,11 @@
+{
+    "title": "Contains Duplicate",
+    "difficulty": "Easy",
+    "tags": [
+        "Array",
+        "Hash Set"
+    ],
+    "time_complexity": "O(n)",
+    "space_complexity": "O(n)",
+    "notes": "Used a Set to track seen numbers. Returns early if duplicate is found."
+}
